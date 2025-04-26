@@ -14,7 +14,14 @@ const jwt = require('jsonwebtoken'); // Pour créer les tokens JWT
 require('dotenv').config(); // Pour charger les variables d'environnement
 
 const app = express();
-const port = 5000;
+const PORT = process.env.PORT || 8080; // 👈 Très important !
+
+// Servir le React buildé
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 // Middleware pour analyser le corps des requêtes en JSON
 app.use(express.json());
@@ -198,6 +205,9 @@ app.use((err, req, res, next) => {
 
 // Accès aux fichiers dans le dossier "uploads"
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+
+
 
 // Démarrage du serveur
 app.listen(port, () => {
